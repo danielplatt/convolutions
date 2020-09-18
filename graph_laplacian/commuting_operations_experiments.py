@@ -7,10 +7,10 @@ from graph_laplacian.plot_discrete_function import plot_discrete_function_multip
 from graph_laplacian.smooth_convolve import smooth_convolve
 
 
-def path1(f, g, n):
+def path1(f, g, n, flavour='fourier_series'):
     f_mat = discretise_function(f, n)
     g_mat = discretise_function(g, n)
-    return graph_convolve(f_mat, g_mat)
+    return graph_convolve(f_mat, g_mat, flavour)
 
 def path2(f, g, n, convolution_resolution=100):
     fg = smooth_convolve(f, g, convolution_resolution, period=1)
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     experiment_pairs = get_experiments()
     n = 20
     for f, g in experiment_pairs:
-        path1_conv = path1(f, g, n)
+        path1_conv = path1(f, g, n, 'fourier_series') # can choose 'scipy' instead
         path2_conv = path2(f, g, n, convolution_resolution=40)
 
         plot_discrete_function_multiple(

@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.signal import convolve2d
+
 
 def smooth_convolve(f, g, resolution, period=1):
     n = resolution
@@ -7,16 +7,14 @@ def smooth_convolve(f, g, resolution, period=1):
     def fg_function(x, y):
         f_matrix = np.fromfunction(lambda i, j: f(j * period / n, i * period / n), (n, n))  # columns=x-coordinate
         g_matrix = np.fromfunction(lambda i, j: g(j * period / n, i * period / n), (n, n))
-        # print('x: %s' % (int(-np.round(x*n))))
 
         g_matrix = np.flip(g_matrix)
         g_matrix = np.roll(g_matrix, int(np.round(x*n)), axis=1)
         g_matrix = np.roll(g_matrix, int(np.round(y*n)), axis=0)
 
         fg_matrix = f_matrix * g_matrix
-        # print(fg_matrix)
 
-        return np.sum(fg_matrix) # should have a /n**2 here
+        return np.sum(fg_matrix) # should really have a /n**2 here
 
     return fg_function
 
