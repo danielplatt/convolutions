@@ -18,9 +18,18 @@ def get_graph_laplacian_eigenbasis(n, flavour='fourier_series'):
         basis = np.transpose(LA.eig(L)[1].real)
         return basis
 
+
 def discrete_laplacian_eigenfunction(n, period1, period2):
     f = np.empty((n, n))
     for i in range(n):
         for j in range(n):
             f[i][j] = np.exp(2j*np.pi*(i*period1/n + j*period2/n))
     return f/np.sqrt(np.sum(f*f))
+
+
+if __name__ == '__main__':
+    print('Eigenbasis obtained by generalising fourier series to two dimensions:')
+    print(get_graph_laplacian_eigenbasis(2, flavour='fourier_series'))
+
+    print('Eigenbasis computed by scipy:')
+    print(get_graph_laplacian_eigenbasis(2, flavour='scipy'))

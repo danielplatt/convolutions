@@ -8,6 +8,7 @@ def plot_discrete_function(f):
     plt.colorbar()
     plt.show()
 
+
 def plot_discrete_function_multiple(functions, rescale_minimum=1):
     plt.figure()
     _, axarr = plt.subplots(1, len(functions))
@@ -23,14 +24,24 @@ def plot_discrete_function_multiple(functions, rescale_minimum=1):
 
     plt.show()
 
+
 if __name__ == '__main__':
     f = lambda x, y: np.cos(2*np.pi*x)
 
-    resolution = 10
-    n = resolution
+    n = 10
 
     f_matrix = np.fromfunction(lambda i, j: f(j/n, i/n), (n, n))
 
+    # plot single matrix
     plot_discrete_function(f_matrix)
 
+    # plot multiple matrices
     plot_discrete_function_multiple([f_matrix, f_matrix])
+
+    # plot multiple matrices with labels
+    plot_discrete_function_multiple(
+        [
+            (f_matrix, 'first'),
+            (f_matrix, 'second')
+        ]
+    )

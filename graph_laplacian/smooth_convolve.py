@@ -14,15 +14,14 @@ def smooth_convolve(f, g, resolution, period=1):
 
         fg_matrix = f_matrix * g_matrix
 
-        return np.sum(fg_matrix) # should really have a /n**2 here, but somehow gives wrong thing
-
+        return np.sum(fg_matrix)/n**2*2
     return fg_function
 
 
 if __name__ == '__main__':
     f = lambda x, y: np.cos(2*np.pi*x)
     g = lambda x, y: np.cos(2*np.pi*x)+np.cos(2*2*np.pi*x)
-    conv = smooth_convolve(f, g, 80) # =f
+    conv = smooth_convolve(f, g, 1000) # =f
     print((conv(0.0, 0.), f(0.0, 0.)))
     print((conv(0.2, 0.2), f(0.2, 0.2)))
     print((conv(0.2, 0.5), f(0.2, 0.5)))

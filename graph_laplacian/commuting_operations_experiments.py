@@ -11,10 +11,12 @@ def path1(f, g, n, flavour='fourier_series'):
     g_mat = discretise_function(g, n)
     return graph_convolve(f_mat, g_mat, flavour)
 
+
 def path2(f, g, n, convolution_resolution=100):
     fg = smooth_convolve(f, g, convolution_resolution, period=1)
     disc_fg = discretise_function(fg, n)
     return disc_fg
+
 
 def get_experiments():
     experiment_pairs = [
@@ -45,11 +47,12 @@ def get_experiments():
     ]
     return experiment_pairs
 
+
 if __name__ == '__main__':
     experiment_pairs = get_experiments()
-    n = 20
+    n = 10
     for f, g in experiment_pairs:
-        path1_conv = path1(f, g, n, 'fourier_series') # can choose 'scipy' instead
+        path1_conv = path1(f, g, n, 'fourier_series')  # can choose 'scipy' instead
         path2_conv = path2(f, g, n, convolution_resolution=40)
 
         plot_discrete_function_multiple(
@@ -59,5 +62,5 @@ if __name__ == '__main__':
                 (path1_conv, 'f graph conv g'),
                 (path2_conv, 'f smooth conv g')
             ],
-            rescale_minimum=1
+            rescale_minimum=0.0001
         )

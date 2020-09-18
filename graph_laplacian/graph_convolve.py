@@ -30,21 +30,16 @@ def graph_convolve(f, g, flavour='fourier_series'):
 
 
 if __name__ == '__main__':
-    f = lambda x, y: np.cos(2*np.pi*x)
-    # g = lambda x, y: 1/2*np.cos(2*np.pi*x)+1/2*np.cos(2*2*np.pi*x)
+    f = lambda x, y: x**2 + y**2
     g = lambda x, y: 1+0*x
 
-    resolution = 2
-    n = resolution
+    n = 2
 
     f_matrix = np.fromfunction(lambda i, j: f(j/n, i/n), (n, n))
     g_matrix = np.fromfunction(lambda i, j: g(j/n, i/n), (n, n))
 
-    print((f_matrix, g_matrix))
-    print('-')
+    print('Matrix f: \n%s\n' % f_matrix)
+    print('Matrix g: \n%s\n' % g_matrix)
 
-    print(np.sum(np.abs(f_matrix-graph_convolve(f_matrix, g_matrix)))/(n**2))
-    # 150: 0.64
-
-    print(np.std(np.abs(f_matrix - graph_convolve(f_matrix, g_matrix)))) # should be 0
-    print(np.mean(np.abs(f_matrix - graph_convolve(f_matrix, g_matrix)))) # should be 0
+    print('Graph convolution with a constant function is constant:')
+    print(graph_convolve(f_matrix, g_matrix))

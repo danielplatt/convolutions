@@ -19,4 +19,5 @@ def get_grid_adjaceny_matrix(n):
     return mat
 
 if __name__ == '__main__':
-    print(get_grid_adjaceny_matrix(4))
+    print('Adjacency matrix for 2x2 grid with wraparound (i.e. on the 2-torus):')
+    print(get_grid_adjaceny_matrix(2))
