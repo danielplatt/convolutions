@@ -1,4 +1,3 @@
-import logging
 import numpy as np
 
 from graph_laplacian.discretise_function import discretise_function

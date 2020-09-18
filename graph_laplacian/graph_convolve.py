@@ -1,10 +1,6 @@
 import numpy as np
-from numpy import linalg as LA
-from scipy.sparse import csgraph
 
 from graph_laplacian.graph_laplacian_eigenbasis import get_graph_laplacian_eigenbasis
-from graph_laplacian.plot_discrete_function import plot_discrete_function_multiple
-from graph_laplacian.adjency_matrices import get_grid_adjaceny_matrix
 
 
 def graph_convolve(f, g, flavour='fourier_series'):

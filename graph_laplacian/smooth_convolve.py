@@ -14,7 +14,7 @@ def smooth_convolve(f, g, resolution, period=1):
 
         fg_matrix = f_matrix * g_matrix
 
-        return np.sum(fg_matrix) # should really have a /n**2 here
+        return np.sum(fg_matrix) # should really have a /n**2 here, but somehow gives wrong thing
 
     return fg_function
 
