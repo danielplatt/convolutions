@@ -48,11 +48,11 @@ def get_experiments():
     return experiment_pairs
 
 
-if __name__ == '__main__':
+def main(flavour='fourier_series'):
     experiment_pairs = get_experiments()
     n = 10
     for f, g in experiment_pairs:
-        path1_conv = path1(f, g, n, 'fourier_series')  # can choose 'scipy' instead
+        path1_conv = path1(f, g, n, flavour)  # can choose 'scipy' instead
         path2_conv = path2(f, g, n, convolution_resolution=40)
 
         plot_discrete_function_multiple(
@@ -64,3 +64,7 @@ if __name__ == '__main__':
             ],
             rescale_minimum=0.0001
         )
+
+
+if __name__ == '__main__':
+    main()

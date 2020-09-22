@@ -8,13 +8,13 @@ def smooth_convolve(f, g, resolution, period=1):
         f_matrix = np.fromfunction(lambda i, j: f(j * period / n, i * period / n), (n, n))  # columns=x-coordinate
         g_matrix = np.fromfunction(lambda i, j: g(j * period / n, i * period / n), (n, n))
 
-        g_matrix = np.flip(g_matrix)
+        g_matrix = np.roll(np.flip(g_matrix), 1)
         g_matrix = np.roll(g_matrix, int(np.round(x*n)), axis=1)
         g_matrix = np.roll(g_matrix, int(np.round(y*n)), axis=0)
 
         fg_matrix = f_matrix * g_matrix
 
-        return np.sum(fg_matrix)/n**2*2
+        return np.sum(fg_matrix)/n**2
     return fg_function
 
 
