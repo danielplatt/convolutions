@@ -38,7 +38,6 @@ Note that the very non-smooth sixth example gives different results.
 ![Comparing convolutions 3](graph_laplacian/images/fourier_convolution_3.png)
 ![Comparing convolutions 4](graph_laplacian/images/fourier_convolution_4.png)
 ![Comparing convolutions 5](graph_laplacian/images/fourier_convolution_5.png)
-![Comparing convolutions 6](graph_laplacian/images/fourier_convolution_6.png)
 
 If choosing the eigenbasis computed by scipy, we find that the two convolutions do not agree:
 
@@ -47,7 +46,6 @@ If choosing the eigenbasis computed by scipy, we find that the two convolutions 
 ![Comparing scipy convolutions 3](graph_laplacian/images/scipy_convolution_3.png)
 ![Comparing scipy convolutions 4](graph_laplacian/images/scipy_convolution_4.png)
 ![Comparing scipy convolutions 5](graph_laplacian/images/scipy_convolution_5.png)
-![Comparing scipy convolutions 6](graph_laplacian/images/scipy_convolution_6.png)
 
 ## Reproducing the experiment
 
